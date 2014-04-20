@@ -24,7 +24,7 @@ localReceiptPath = "./invoices/"
 localPathWithBillable = true
 localPathWithCustomerName = true
 localPathWithProjectName = true
-
+localPathWithYearMonth = true
 
 data = RestClient.get expensesEndPointApi, {:params => {:authtoken => authToken, :organization_id => organizationId}}
 
@@ -33,7 +33,6 @@ data = JSON.parse(data)
 data["expenses"].each do |line|
 	expense = JSON.parse(RestClient.get expensesEndPointApi + '/' + line["expense_id"], {:params => {:authtoken => authToken, :organization_id => organizationId}})
 	expense = expense["expense"]
-
 	fileName = ""
 	filePath = ""
 	if localPathWithBillable && expense["is_billable"]
@@ -49,6 +48,17 @@ data["expenses"].each do |line|
 	if localPathWithProjectName && expense["project_name"] != ""
 		filePath = filePath + expense["project_name"] + "/"
 	end
+
+	if localPathWithYearMonth
+		d = Date.parse(expense["date"])
+		if d.month < 10
+			month = "0" + d.month.to_s
+		else
+			month = d.month.to_s
+		end
+		filePath = filePath + d.year.to_s + "-" + month + "/"
+	end
+
 	FileUtils::mkdir_p localReceiptPath + filePath
 
 	fileName = filePath + expense["date"] + "_" + expense["expense_id"] + "_" + expense["expense_receipt_name"]
