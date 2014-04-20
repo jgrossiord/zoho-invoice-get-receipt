@@ -17,6 +17,7 @@ It uses the [Zoho API](https://www.zoho.com/invoice/api/v3/index.html) to get th
       [non]billable/
         [Client Name]/
           [Project Name]/
+            [Year-Month]
 
 (you should be able to modify this sheme easily)
 
