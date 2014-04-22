@@ -15,8 +15,8 @@ require 'fileutils'
 # Config
 baseApiUrl = 'https://invoice.zoho.com/api/v3'
 expensesEndPointApi = baseApiUrl + "/expenses"
-authToken = '[AUTHTOKEN]'
-organizationId = '[ORGANIZATIONID]'
+authToken = [AUTHTOKEN]
+organizationId = [ORGANIZATIONID]
 
 # Local path where receipts will be stored
 localReceiptPath = "./invoices/"
