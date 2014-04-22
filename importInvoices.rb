@@ -7,7 +7,6 @@
 # Get [ORGANIZATIONID] at https://invoice.zoho.com/api/v3/organizations?authtoken=[AUTHTOKEN]
 # Update your credential
 
-
 require 'rest-client'
 require 'json'
 require 'open-uri'
@@ -16,8 +15,8 @@ require 'fileutils'
 # Config
 baseApiUrl = 'https://invoice.zoho.com/api/v3'
 expensesEndPointApi = baseApiUrl + "/expenses"
-authToken = '[AUTHTOKEN]'
-organizationId = '[ORGANIZATIONID]'
+authToken = [AUTHTOKEN]
+organizationId = [ORGANIZATIONID]
 
 # Local path where receipts will be stored
 localReceiptPath = "./invoices/"
